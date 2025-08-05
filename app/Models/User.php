@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -43,13 +41,27 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function todos() {
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    public function todos()
+    {
         return $this->hasMany(Todo::class);
     }
-    public function todo_items() {
+    public function todo_items()
+    {
         return $this->hasMany(TodoItem::class);
     }
-    public function todo_accesses() {
+    public function todo_accesses()
+    {
         return $this->hasMany(TodoAccess::class);
     }
 }
