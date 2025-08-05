@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'type'
     ];
 
     /**
@@ -30,7 +32,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -39,7 +40,16 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function todos() {
+        return $this->hasMany(Todo::class);
+    }
+    public function todo_items() {
+        return $this->hasMany(TodoItem::class);
+    }
+    public function todo_accesses() {
+        return $this->hasMany(TodoAccess::class);
+    }
 }

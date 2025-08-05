@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('todo_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('type', ['user', 'admin'])->default('user');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('todo_id');
+            $table->mediumText('content');
+            $table->enum('status', [0, 1])->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('todo_items');
     }
 };
