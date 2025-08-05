@@ -64,4 +64,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(TodoAccess::class);
     }
+    public function accessible_todos()
+    {
+        return $this->belongsToMany(Todo::class, 'todo_accesses')
+            ->withPivot('status')
+            ->wherePivot('status', '1');
+    }
 }

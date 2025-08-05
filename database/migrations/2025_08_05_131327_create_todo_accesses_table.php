@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('todo_accesses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('todo_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('todo_id')->constrained()->onDelete('cascade');
+            $table->enum('status', [0, 1, 2])->default(0);
             $table->timestamps();
         });
     }

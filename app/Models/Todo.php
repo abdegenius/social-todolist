@@ -8,13 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Todo extends Model
 {
     use HasFactory;
-    public function user() {
+
+    protected $fillable = ['user_id', 'title', 'code'];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    public function todo_items() {
+    public function items()
+    {
         return $this->hasMany(TodoItem::class);
     }
-    public function todo_accesses() {
+    public function accesses()
+    {
         return $this->hasMany(TodoAccess::class);
     }
 }
