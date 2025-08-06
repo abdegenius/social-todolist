@@ -60,3 +60,83 @@ npm run dev
 
 # 10. Serve the application
 php artisan serve
+```
+
+## 🔐 Authentication
+All authenticated routes use the Authorization: Bearer <token> header after logging in.
+
+## 📡 API Endpoints
+
+
+## 🔐 Auth Routes
+```bash
+Method	Endpoint	Description
+POST	/api/register	Register a new user
+POST	/api/login	Login and get JWT
+```
+
+## 👤 User Routes
+```bash
+Method	Endpoint	Description
+GET	/api/users/profile	Get authenticated user
+POST	/api/users/logout	Logout the user
+```
+
+## 📁 Todo Lists
+```bash
+Method	Endpoint	Description
+GET	/api/todos	List all todos
+POST	/api/todos	Create new todo list
+GET	/api/todos/{id}	Show a specific todo list
+DELETE	/api/todos/{id}	Delete a todo list
+
+PUT /todos/{id} is not included (as per excluded in route)
+```
+
+## 📝 Todo Items
+```bash
+Method	Endpoint	Description
+POST	/api/todos/{todo}/items	Add item to a todo list
+PUT	/api/items/{item}	Update a todo item
+DELETE	/api/items/{item}	Delete a todo item
+```
+
+## 🔍 User Search
+```bash
+Method	Endpoint	Description
+GET	/api/users/search	Search by name/email
+GET	/api/users/complete-search	Autocomplete user search
+```
+
+## 🤝 Todo Access & Invitations
+```bash
+Method	Endpoint	Description
+POST	/api/todos/{todo}/invite	Invite a user to a todo list
+PUT	/api/accesses/{access}	Accept or reject an invitation
+GET	/api/invitations	List of user's invitations
+```
+
+## 📊 Dashboard Summary
+```bash
+Method	Endpoint	Description
+GET	/api/dashboard-summary	Get total, pending, completed todos
+```
+
+## 🎨 UI & UX Enhancements
+
+TailwindCSS: Modern and utility-first styling
+
+Toastr: Clean toast notifications
+
+Alpine.js: Lightweight frontend interactivity
+
+Font Awesome: Icons for buttons and indicators
+
+📄 License
+This project is open-source and available under the MIT License.
+
+## 👨‍💻 Author
+- Johnnie B. Abijah
+- GitHub: @abdegenius
+- Email: abijahjohnnie@gmail.com
+
