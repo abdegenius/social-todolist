@@ -89,8 +89,6 @@ GET	/api/todos	List all todos
 POST	/api/todos	Create new todo list
 GET	/api/todos/{id}	Show a specific todo list
 DELETE	/api/todos/{id}	Delete a todo list
-
-PUT /todos/{id} is not included (as per excluded in route)
 ```
 
 ## 📝 Todo Items
@@ -104,8 +102,8 @@ DELETE	/api/items/{item}	Delete a todo item
 ## 🔍 User Search
 ```bash
 Method	Endpoint	Description
-GET	/api/users/search	Search by name/email
-GET	/api/users/complete-search	Autocomplete user search
+GET	/api/users/search	Search by username(partial)
+GET	/api/users/complete-search	Complete username search
 ```
 
 ## 🤝 Todo Access & Invitations
