@@ -44,7 +44,7 @@ class TodoItemController extends Controller
             'status' => 'required|in:1,0'
         ]);
 
-        $item->update(['status' => $request->status]);
+        $item->update(['content' => $request->content, 'status' => $request->status]);
         return response()->json($item);
     }
 

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+    ApiController,
     AuthController,
     TodoController,
     TodoItemController,
@@ -33,9 +34,12 @@ Route::group(['middleware' => 'json.response'], function () {
         Route::get('users/search', [UserController::class, 'search']);
         Route::get('users/complete-search', [UserController::class, 'complete_search']);
 
-        // Todo Access Management
+        // Todo Access
         Route::post('todos/{todo}/invite', [TodoAccessController::class, 'invite']);
         Route::put('accesses/{access}', [TodoAccessController::class, 'respond']);
         Route::get('invitations', [TodoAccessController::class, 'invitations']);
+
+        // Dashboard API
+        Route::get('dashboard-summary', [ApiController::class, 'dashboard_summary']);
     });
 });

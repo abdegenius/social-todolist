@@ -36,8 +36,24 @@ class TodoController extends Controller
     public function index()
     {
         $user = JWTAuth::user();
-        $todos = $user->accessible_todos()->with('user')->get();
+        $todos = $user->accessible_todos()->with('user', 'items', 'accesses.user')->get();
         return response()->json($todos);
+        // $userId = $user->id;
+
+        // $todos = Todo::with(['user', 'items', 'accesses' => function ($query) use ($userId) {
+        //     $query->where('user_id', $userId)->where('status', '1');
+        // }])
+        //     ->whereHas('accesses', function ($query) use ($userId) {
+        //         $query->where('user_id', $userId)->where('status', '1');
+        //     })
+        //     ->get();
+
+        // $todos->each(function ($todo) use ($userId) {
+        //     $todo->setRelation('pivot', $todo->accesses->firstWhere('user_id', $userId));
+        //     unset($todo->accesses); 
+        // });
+
+        // return response()->json($todos);
     }
 
 
